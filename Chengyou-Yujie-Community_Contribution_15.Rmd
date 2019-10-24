@@ -2,7 +2,7 @@
 title: "Chengyou-Yujie-Community_Contribution_15"
 author: "Chengyou Ju, Yujie Wang"
 date: "10/24/2019"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
