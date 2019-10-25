@@ -6,3 +6,4 @@ For our project, we will create a tutorial through R Markdown on how to draw Wor
 Wordcloud is a visual representation of text data.
 ## References
 https://www.r-graph-gallery.com/wordcloud.html
+https://cran.r-project.org/web/packages/wordcloud2/wordcloud2.pdf
