@@ -9,22 +9,74 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+This Rmd file is created by Chengyou Ju (UNI: cj2624) and Yujie Wang (UNI: yw3442) for STAT GR5702 Community Contribution Group 15.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+In this file, we will provide a tutorial on how to draw Wordcloud graphs using the `wordcloud2` package in R. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The dataset in this project are from the **demoFreq** package.
 
-```{r cars}
-summary(cars)
+## 1. Introduction
+
+A Wordcloud is a visual representation of text data. Wordclouds are useful for quickly perceiving the most prominent terms, which makes them widely used in media and well understood by the public. 
+
+There are two packages in R that can help us draw a wordcloud. `wordcloud` is the basic package to build the graph, while `wordcloud2` package allows more customization. In our demo, we will focus on the `wordcloud2` package, which is more widely used.
+
+## 2. Demo of `wordcloud2` Package
+
+For our demo, we will use a built-in dataset `demoFreq`, which has 1011 observations of 2 variables, words and frequancy.
+```{r}
+head(demoFreq)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+### 2.0 Basic Wordcloud Graph
+Building a wordcloud graph is simple. We can use the `wordcloud2` package directly after successfully installing it.
+```{r}
+library(wordcloud2)
+wordcloud2(data = demoFreq)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### 2.1 Font Size
+We can also modify the font size of the graph.
+```{r}
+wordcloud2(data = demoFreq, size = 0.5)
+```
+```{r}
+wordcloud2(data = demoFreq, size = 1.5)
+```
+
+### 2.2 Color and Background Color
+The word color can be changed using the "color" argument, while the background color can be changed with "backgroundColor".
+```{r}
+wordcloud2(demoFreq, color = 'random-dark')
+```
+```{r}
+wordcloud2(demoFreq, color = 'random-light')
+```
+```{r}
+wordcloud2(demoFreq, color = 'random-light', backgroundColor = "black")
+```
+```{r}
+wordcloud2(demoFreq, color = rep_len(c("skyblue", "blue"), nrow(demoFreq)))
+```
+
+### 2.3 Shape
+We can also customize the shape of a wordcloud using the "shape" argument. Here are some examples.
+```{r}
+wordcloud2(demoFreq, size = 0.5, shape = 'star')
+```
+```{r}
+wordcloud2(demoFreq, size = 0.5, shape = 'pentagon')
+```
+
+```{r}
+letterCloud(demoFreq, word = "R", color = "random-light", backgroundColor = "black")
+can also do rotation on the wordcloud graph.
+```{r}
+wordcloud2(demoFreq, minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1)
+```
+
+### 2.5 Language
+We can draw a wordcloud graph of words in Chinese.
+```{r}
+wordcloud2(demoFreqC, fontFamily = "????????????", color = "random-light", backgroundColor = "black")
+```
