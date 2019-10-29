@@ -14,7 +14,10 @@ The dataset in this project are from the **demoFreq** package.
 
 This is the GitHub repo for our project: https://github.com/ju-chengyou/5702_Community_Contribution_15.
 
-## 1. Introduction
+In order to get the best viewing experience, please install the package through `library(devtools)` and 
+`devtools::install_github("lchiffon/wordcloud2")` in the cosole. Also notice some chunks of code may need to be run multiple times.
+
+## Introduction
 
 A Wordcloud is a visual representation of text data. Wordclouds are useful for quickly perceiving the most prominent terms, which makes them widely used in media and well understood by the public. 
 
@@ -22,7 +25,7 @@ A Wordcloud is a collection of words depicted in different sizes. The bigger and
 
 There are two packages in R that can help us draw a wordcloud. `wordcloud` is the basic package to build the graph, while `wordcloud2` package allows more customization. In our demo, we will focus on the `wordcloud2` package, which is more widely used.
 
-## 2. Demo of `wordcloud2` Package
+## Demo of `wordcloud2` Package
 
 For our demo, we will use a built-in dataset `demoFreq`, which has 1011 observations of 2 variables, words and frequancy.
 ```{r}
@@ -45,7 +48,7 @@ head(demoFreq)
 `figPath` - The path to a figure used as a mask.<br>
 `hoverFunction` - Callback to call when the cursor enters or leaves a region occupied by a word.<br>
 
-### 2.0 Basic Wordcloud Graph
+### Basic Wordcloud Graph
 Building a wordcloud graph is simple. We can use the `wordcloud2` package directly after successfully installing it.
 
 ```{r}
@@ -54,7 +57,7 @@ wordcloud2(data = demoFreq)
 As we can see, the word cloud is easy to build and to read. Words with large frequency like 'said' and 'oil' are displayed in big font size.<br> It is actually an interactive plot. If we hover on a certain word, it will pop up the word with its frequency.
 
 
-### 2.1 Font Size
+### Font Size
 We can also modify the font size of the graph.
 ```{r}
 wordcloud2(data = demoFreq, size = 0.5)
@@ -63,7 +66,7 @@ wordcloud2(data = demoFreq, size = 0.5)
 wordcloud2(data = demoFreq, size = 1.5)
 ```
 
-### 2.2 Color and Background Color
+### Color and Background Color
 The word color can be changed using the "color" argument, while the background color can be changed with "backgroundColor".
 ```{r}
 wordcloud2(demoFreq, color = 'random-dark')
@@ -78,7 +81,7 @@ wordcloud2(demoFreq, color = 'random-light', backgroundColor = "black")
 wordcloud2(demoFreq, color = rep_len(c("skyblue", "blue"), nrow(demoFreq)))
 ```
 
-### 2.3 Shape
+### Shape
 We can also customize the shape of a wordcloud using the "shape" argument. Here are some examples.
 ```{r}
 wordcloud2(demoFreq, size = 0.5, shape = 'star')
@@ -87,30 +90,26 @@ wordcloud2(demoFreq, size = 0.5, shape = 'star')
 wordcloud2(demoFreq, size = 0.5, shape = 'pentagon')
 ```
 
-### 2.4 Rotation
+### Rotation
 We can also do rotation on the wordcloud graph.
 ```{r}
 wordcloud2(demoFreq, minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1)
 ```
 
-### 2.5 Language
+### Language
 We can draw a wordcloud graph of words in Chinese.
 ```{r}
 wordcloud2(demoFreqC, fontFamily = "????????????", color = "random-light", backgroundColor = "black")
 ```
 
 
-### 2.6 Customized shape
+### Customized shape
 We can build wordcloud with the shape of a word using function `letterCloud`.
-```{r,eval = FALSE}
+```{r}
 letterCloud(demoFreq, word = "R", color = "random-light", backgroundColor = "black")
 ```
-![R](R.png)
-<br>
-<br>
 Also, we can create user-defined shape for the wordcloud by simply adding the image we choose to figPath.
-```{r,eval = FALSE}
+```{r}
 wordcloud2(demoFreq, figPath ="~/Desktop/batman.png", size = 1,
            color = "random-light",backgroundColor = "black") 
 ```
-![batman](bat.png)
